@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://durmwjcmsk5du"]
+
+[ext_resource type="Script" uid="uid://lleqa7ctm8lp" path="res://scripts/spawanEntity.gd" id="1_34idu"]
+[ext_resource type="PackedScene" uid="uid://3oxh6hft0nhn" path="res://scene/testScenes/TestInsides.tscn" id="2_0fu2q"]
+
+[node name="EntitySpawaner" type="Node3D"]
+script = ExtResource("1_34idu")
+Entity_scene = ExtResource("2_0fu2q")

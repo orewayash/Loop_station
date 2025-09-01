@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bly12vmr0712g"]
+
+[ext_resource type="Texture2D" uid="uid://b2k422354ckd" path="res://icon.svg" id="1_t0ech"]
+[ext_resource type="AudioStream" uid="uid://dbm267tk4851k" path="res://assets/entity.wav" id="2_6oe72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6oe72"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999701, 0.0244322, 0, -0.0244322, 0.999701, 0, 0.102235, 0.840593)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatableBody3D/Sprite3D")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+constant_angular_velocity = Vector3(0.174533, 0.0349066, 0.0523599)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_6oe72")
+
+[node name="Sprite3D" type="Sprite3D" parent="AnimatableBody3D"]
+texture = ExtResource("1_t0ech")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_6oe72")
+autoplay = true

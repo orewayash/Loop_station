@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://djed1dy2nlpio"]
+
+[ext_resource type="Texture2D" uid="uid://wn3lar6temx3" path="res://assets/images/Download_White_Circle_PNG-removebg-preview.png" id="1_vfinm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oh5ij"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Crosshair" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.0895338, -0.806472)
+texture = SubResource("ViewportTexture_oh5ij")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(381, 381)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture_repeat = 1
+position = Vector2(189, 191)
+texture = ExtResource("1_vfinm")

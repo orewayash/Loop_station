@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlpiyqotkt748"]
+
+[ext_resource type="Script" uid="uid://oosqfb1oyxby" path="res://scripts/final_train_scene.gd" id="1_515fh"]
+[ext_resource type="PackedScene" uid="uid://x3u4ecjnyg2w" path="res://assets/train_loop_final_v.tscn" id="1_k5us8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k5us8"]
+radius = 1.37249
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_515fh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmmer"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ck6f"]
+material = SubResource("StandardMaterial3D_vmmer")
+
+[node name="FinalTrainScene" type="Node3D"]
+script = ExtResource("1_515fh")
+
+[node name="train_loop_final_V" parent="." instance=ExtResource("1_k5us8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37, 0, 3.65)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.740381, 0.165922, 0, 1)
+light_energy = 7.0
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996272, 0.086269, 0, -0.086269, 0.996272, -2.86126, 2.96998, 12.3592)
+light_energy = 10.0
+light_size = 2.0
+spot_range = 20.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6952)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5.01, 0, 0, 0, 5.01, 0, 0, 0, 5.01, -0.910447, 1.33802, -20.9076)
+shape = SubResource("SphereShape3D_k5us8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15213, 2.96469, -26.5236)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.727
+light_specular = 16.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09414, 2.65961, 27.0934)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 17.225
+spot_range = 44.0651
+spot_angle = 8.6248
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15213, 2.96469, -0.828449)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0807452)
+visible = false
+shape = SubResource("SphereShape3D_515fh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2"]
+transform = Transform3D(8.945, 0, 0, 0, 8.945, 0, 0, 0, 8.945, 0, 0, 4.91889)
+mesh = SubResource("SphereMesh_4ck6f")
+skeleton = NodePath("../CollisionShape3D")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

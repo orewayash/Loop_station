@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgloiwuh3gm6m"]
+
+[ext_resource type="PackedScene" uid="uid://f263pnhmowsc" path="res://assets/monster_ani_V3.glb" id="1_3f1eb"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3f1eb"]
+animation = &"Armature|mixamo_com|Layer0_001"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3fnug"]
+animation = &"Armature|mixamo_com|Layer0_002"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_kjy8v"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3f1eb")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_3fnug")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_esgbr"]
+graph_offset = Vector2(-482, 3)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_kjy8v")
+nodes/BlendSpace1D/position = Vector2(40, 100)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
+[node name="monster_ani_V3" instance=ExtResource("1_3f1eb")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-0.0966804, -0.00972581, -1.11948)
+bones/0/rotation = Quaternion(0.518999, -0.504318, 0.477819, -0.497989)
+bones/1/rotation = Quaternion(0.327401, -0.00740381, 0.0900228, 0.940558)
+bones/2/rotation = Quaternion(0.0626335, -0.0119218, 0.0192421, 0.99778)
+bones/3/rotation = Quaternion(0.0631003, -0.0105387, 0.0177672, 0.997793)
+bones/4/rotation = Quaternion(-0.030504, 0.0242191, -0.0186051, 0.999068)
+bones/5/rotation = Quaternion(-0.310126, 0.129468, -0.0897228, 0.937555)
+bones/7/rotation = Quaternion(-0.612874, -0.364344, 0.61466, -0.337389)
+bones/8/rotation = Quaternion(0.44644, -0.101668, 0.218033, 0.861868)
+bones/9/rotation = Quaternion(-0.0746253, 0.0176072, 0.290181, 0.953895)
+bones/10/rotation = Quaternion(-0.175497, -0.423961, 0.180909, 0.869902)
+bones/11/rotation = Quaternion(0.261323, 0.331314, -0.0105754, 0.906548)
+bones/12/rotation = Quaternion(0.118076, 0.0753206, 0.110948, 0.983908)
+bones/13/rotation = Quaternion(0.223269, 0.16068, 0.207746, 0.938709)
+bones/15/rotation = Quaternion(0.602115, -0.371812, 0.614931, 0.347957)
+bones/16/rotation = Quaternion(0.473926, 0.431798, -0.274994, 0.716466)
+bones/17/rotation = Quaternion(-0.0738908, -0.018873, -0.301349, 0.950459)
+bones/18/rotation = Quaternion(0.483917, 0.803841, -0.268488, 0.218125)
+bones/19/rotation = Quaternion(-0.0589266, -0.020108, -0.287497, 0.955756)
+bones/20/rotation = Quaternion(-0.186022, 0.152045, 0.296537, 0.924307)
+bones/21/rotation = Quaternion(-0.0355751, 0.0286862, 0.0555928, 0.997407)
+bones/23/rotation = Quaternion(0.0350576, 0.388122, 0.913282, -0.118525)
+bones/24/rotation = Quaternion(-0.713961, -0.043836, 0.0307658, 0.698134)
+bones/25/rotation = Quaternion(0.499824, -0.0644727, 0.0883576, 0.859193)
+bones/26/rotation = Quaternion(0.337309, -0.0180277, -0.00741965, 0.941192)
+bones/28/rotation = Quaternion(-0.0865501, 0.32593, 0.927718, 0.160056)
+bones/29/rotation = Quaternion(-0.610855, -0.0422363, 0.0251842, 0.790214)
+bones/30/rotation = Quaternion(0.637008, 0.138112, 0.0181665, 0.758166)
+bones/31/rotation = Quaternion(0.331034, -0.00283751, 0.00259566, 0.943611)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Armature|mixamo_com|Layer0"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_esgbr")
+anim_player = NodePath("../AnimationPlayer")
+parameters/BlendSpace1D/blend_position = 0

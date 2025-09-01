@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4lcnihwg2o0e"]
+
+[ext_resource type="PackedScene" uid="uid://cnv54gidjqxbx" path="res://assets/key_.glb" id="1_235de"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iwdtn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ub5rx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_235de"]
+albedo_color = Color(1, 1, 0.0392157, 1)
+emission_enabled = true
+emission = Color(0.988235, 0.752941, 0.156863, 1)
+emission_energy_multiplier = 8.91
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["pickable"]]
+linear_damp = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("SphereShape3D_iwdtn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_ub5rx")
+
+[node name="key_" parent="." instance=ExtResource("1_235de")]
+transform = Transform3D(0.135, 0, 0, 0, -0.134865, 0.0060369, 0, -0.0060369, -0.134865, 0.0952237, 0.291366, -0.0291587)
+
+[node name="Cube" parent="key_" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.999258, -0.0385274, 0, 0.0385274, -0.999258, 0, 4.58428, -0.205204)
+surface_material_override/0 = SubResource("StandardMaterial3D_235de")
+
+[editable path="key_"]

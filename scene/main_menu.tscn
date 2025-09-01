@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bba20gda3gfmu"]
+
+[ext_resource type="Script" uid="uid://bbbhv7b8refuw" path="res://scripts/main_menu.gd" id="1_3er1b"]
+[ext_resource type="Texture2D" uid="uid://bf3xkoo5mc16s" path="res://assets/Screenshot 2025-08-03 174543.png" id="2_2fwvj"]
+[ext_resource type="FontFile" uid="uid://cg44040uoa04y" path="res://assets/images/Plane Crash.ttf" id="2_hxu56"]
+[ext_resource type="FontFile" uid="uid://d0h7oc3y28axp" path="res://assets/images/Danger Zone Warning.ttf" id="3_0iwki"]
+[ext_resource type="AudioStream" uid="uid://cw5byhdftjcr" path="res://assets/3_Soft Vibes.wav" id="5_sepwh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iwki"]
+texture = ExtResource("2_2fwvj")
+
+[node name="MAIN_MENU" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3er1b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1166.0
+offset_bottom = 664.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1164.0
+offset_bottom = 653.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0iwki")
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 305.0
+offset_right = 385.0
+offset_bottom = 375.0
+text = "START"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 418.0
+offset_right = 365.0
+offset_bottom = 480.0
+text = "EXIT"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 545.0
+offset_right = 1092.0
+offset_bottom = 594.0
+text = "@y_gamedev
+@ImmortalNeko"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 492.0
+offset_right = 1570.0
+offset_bottom = 742.0
+theme_override_colors/font_color = Color(0.470588, 0, 0, 0.835294)
+theme_override_fonts/font = ExtResource("3_0iwki")
+theme_override_font_sizes/font_size = 35
+text = "MADE BY"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 91.0
+offset_right = 407.0
+offset_bottom = 187.0
+theme_override_colors/font_color = Color(0.559524, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 80
+text = "loop"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 95.0
+offset_right = 487.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 80
+text = "
+station"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sepwh")
+volume_db = 24.0
+autoplay = true
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=18 format=3 uid="uid://ie08k8bj2fqc"]
+
+[ext_resource type="Script" uid="uid://m8u38jffcgaw" path="res://scripts/world.gd" id="1_4y3pe"]
+[ext_resource type="PackedScene" uid="uid://d26cadldtrqk2" path="res://scene/player.tscn" id="1_sdvrk"]
+[ext_resource type="PackedScene" uid="uid://cfq0qptobe0wf" path="res://scene/testScenes/enemy_spawaner.tscn" id="1_u80n0"]
+[ext_resource type="PackedScene" uid="uid://kkv5mywnpwok" path="res://scene/train.tscn" id="2_b3acj"]
+[ext_resource type="PackedScene" uid="uid://bv0ao0bl4a07n" path="res://scene/nav/shaitan.tscn" id="2_u80n0"]
+[ext_resource type="Script" uid="uid://cdofj35qsc1o4" path="res://scripts/train.gd" id="3_mnuad"]
+[ext_resource type="PackedScene" uid="uid://ct0p6bg0b87rq" path="res://scene/testScenes/test.tscn" id="4_b3acj"]
+[ext_resource type="PackedScene" uid="uid://durmwjcmsk5du" path="res://scene/testScenes/entity_spawaner.tscn" id="5_mnuad"]
+[ext_resource type="PackedScene" uid="uid://b4lcnihwg2o0e" path="res://scene/testScenes/pickable_test.tscn" id="6_40bfn"]
+[ext_resource type="Script" uid="uid://dsdm7cxhbg5jl" path="res://scripts/navgroundspawner.gd" id="9_vowo2"]
+[ext_resource type="PackedScene" uid="uid://dg07jb7cufrnj" path="res://scene/nav/nav_ground.tscn" id="10_r6hv3"]
+[ext_resource type="AudioStream" uid="uid://bqurtt46ecof8" path="res://assets/trainloopsoundeffect.mp3" id="10_vowo2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3sb7"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_fj7yv"]
+sky_material = SubResource("ProceduralSkyMaterial_f3sb7")
+
+[sub_resource type="Environment" id="Environment_tlwt5"]
+background_mode = 2
+sky = SubResource("Sky_fj7yv")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.268862, 0.294321, 0.334342, 1)
+fog_light_energy = 1.65
+fog_sun_scatter = 0.16
+fog_density = 0.1276
+fog_height_density = 1.0541
+volumetric_fog_density = 0.0294
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tlwt5"]
+size = Vector2(20.4, 19.065)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_aqk2v"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_4y3pe")
+
+[node name="Enemy_spawaner" parent="." instance=ExtResource("1_u80n0")]
+entity_scene = ExtResource("2_u80n0")
+player_path = NodePath("../Rob")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tlwt5")
+
+[node name="Rob" parent="." instance=ExtResource("1_sdvrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193791, 1.40156, 1.29412)
+
+[node name="TrainSpawners" parent="." instance=ExtResource("2_b3acj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("3_mnuad")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.355)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
+mesh = SubResource("PlaneMesh_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+visible = false
+shape = SubResource("WorldBoundaryShape3D_aqk2v")
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("4_b3acj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91647, 1.53034, 0.746705)
+
+[node name="EntitySpawaner" parent="." instance=ExtResource("5_mnuad")]
+transform = Transform3D(0.947696, 0.319174, 0, -0.319174, 0.947696, 0, 0, 0, 1, 0, 0, 0)
+pickable_scene = ExtResource("6_40bfn")
+
+[node name="PickableTest" parent="." instance=ExtResource("6_40bfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 2)
+
+[node name="navGroundSpawner" parent="." instance=ExtResource("5_mnuad")]
+transform = Transform3D(0.947696, 0.319174, 0, -0.319174, 0.947696, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("9_vowo2")
+Entity_scene = ExtResource("10_r6hv3")
+spawn_offset = Vector3(0.9353, 0, 0.95)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vowo2")
+autoplay = true
+parameters/looping = true

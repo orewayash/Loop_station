@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bbw4p736leuqj"
+path.s3tc="res://.godot/imported/monster_ani_V3_Screenshot 2025-08-01 214001.png-0c1d062ee53ed5d437b48256fe0e32b5.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "9fc5c4d8fc9c13426b659bc5304fd5ef"
+}
+
+[deps]
+
+source_file="res://assets/monster_ani_V3_Screenshot 2025-08-01 214001.png"
+dest_files=["res://.godot/imported/monster_ani_V3_Screenshot 2025-08-01 214001.png-0c1d062ee53ed5d437b48256fe0e32b5.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

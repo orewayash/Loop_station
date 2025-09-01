@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3oxh6hft0nhn"]
+
+[ext_resource type="PackedScene" uid="uid://ilveb2y15mg7" path="res://assets/images/Untitled_bag.glb" id="1_udpqk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d75xi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jk0d6"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("SphereShape3D_d75xi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_jk0d6")
+
+[node name="Untitled_bag" parent="." instance=ExtResource("1_udpqk")]
+transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, 0.151816, -0.481007, -0.205284)

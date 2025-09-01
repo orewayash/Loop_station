@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddm3uwln2650c"]
+
+[ext_resource type="Script" uid="uid://bo20qf4kbgh23" path="res://scripts/you_won.gd" id="1_am3wb"]
+[ext_resource type="FontFile" uid="uid://d0h7oc3y28axp" path="res://assets/images/Danger Zone Warning.ttf" id="1_kxxj2"]
+[ext_resource type="FontFile" uid="uid://cg44040uoa04y" path="res://assets/images/Plane Crash.ttf" id="2_am3wb"]
+[ext_resource type="AudioStream" uid="uid://cw5byhdftjcr" path="res://assets/3_Soft Vibes.wav" id="3_4v2ej"]
+
+[node name="YouWon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_am3wb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = 57.0
+offset_right = 128.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 165.0
+offset_right = 108.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 545.0
+offset_right = 1092.0
+offset_bottom = 594.0
+text = "@y_gamedev
+@ImmortalNeko"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 492.0
+offset_right = 1570.0
+offset_bottom = 742.0
+theme_override_colors/font_color = Color(0.470588, 0, 0, 0.835294)
+theme_override_fonts/font = ExtResource("1_kxxj2")
+theme_override_font_sizes/font_size = 35
+text = "MADE BY"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -195.0
+offset_right = 104.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.559524, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_am3wb")
+theme_override_font_sizes/font_size = 200
+text = "you"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -216.0
+offset_right = 151.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_am3wb")
+theme_override_font_sizes/font_size = 105
+text = "
+won"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4v2ej")
+volume_db = 24.0
+autoplay = true
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 618.0
+offset_right = 165.0
+offset_bottom = 641.0
+theme_override_fonts/font = ExtResource("2_am3wb")
+text = "loop station"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
